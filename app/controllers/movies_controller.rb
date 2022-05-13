@@ -7,5 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
+    @movie = MovieService.get_movie(params[:movie_id])
   end
 end
