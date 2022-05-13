@@ -3,7 +3,7 @@
   <%= form_with url: "/users/#{@user.id}/movies/#{@movie[:id]}/viewing-party", method: :post, local: true do |f| %>
     <%= f.label "Duration (mins)" %>
     <% duration = [*@movie[:runtime]..300] %>
-    <%= f.select(:duration, duration, selected: duration.min) %>
+    <%= f.select(:length, duration, selected: duration.min) %>
     <br>
     <%= f.label :date %>
     <%= f.date_field :date %>
