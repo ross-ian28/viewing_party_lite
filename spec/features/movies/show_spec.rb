@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "movie detail page" do
-  let!(:pabu) { User.create!(name: "Pabu", email: "pabu@email.com") }
+  let!(:pabu) { User.create!(name: "Pabu", email: "pabu@email.com", password: "pabu123", password_confirmation: "pabu123") }
   let!(:movie) { MovieService.get_movie(550) }
 
   before :each do
