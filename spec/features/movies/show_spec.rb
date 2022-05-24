@@ -5,20 +5,27 @@ RSpec.describe "movie detail page" do
   let!(:movie) { MovieService.get_movie(550) }
 
   before :each do
-    visit "users/#{pabu.id}/movies/550"
+    visit "/login"
+
+    fill_in "email", with: "pabu@email.com"
+    fill_in "password", with: "pabu123"
+
+    click_button "Login"
+
+    visit "dashboard/movie/550"
   end
 
   describe "movie show" do
     it "has button to create party" do
       click_button "Create Viewing Party"
 
-      expect(current_path).to eq("/users/#{pabu.id}/movies/#{movie[:id]}/viewing-party/new")
+      expect(current_path).to eq("/dashboard/movies/#{movie[:id]}/viewing-party/new")
     end
 
     it "has button to return to discover" do
       click_button "Discover Page"
 
-      expect(current_path).to eq("/users/#{pabu.id}/discover")
+      expect(current_path).to eq("/dashboard/discover")
     end
 
     it "shows movie information" do
